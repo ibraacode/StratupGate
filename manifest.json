@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "StartupGate Pro",
+  "version": "2.0",
+  "description": "Premium access paywall (Video Edition)",
+  "permissions": ["windows", "storage", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

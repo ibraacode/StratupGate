@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Checkout</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding-top: 2rem;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .checkout-container {
+      width: 100%;
+      max-width: 380px;
+      padding: 2rem;
+    }
+
+    .header { display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; }
+    .back-btn { background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 1.5rem; padding-right: 10px; }
+    .header-title { font-weight: 600; font-size: 1.1rem; }
+
+    .order-summary {
+      background: #111; border: 1px solid #333; border-radius: 0.75rem;
+      padding: 1.5rem; margin-bottom: 2rem;
+    }
+    .order-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #9ca3af; font-size: 0.9rem; }
+    .order-total { display: flex; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #333; font-weight: 700; font-size: 1.2rem; color: white; }
+
+    .form-group { margin-bottom: 1.2rem; display: none; } 
+    .form-group.active { display: block; }
+    
+    label { display: block; font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.5rem; }
+    input {
+      width: 100%; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid #333;
+      background: #1a1a1a; color: white; outline: none; font-family: inherit; font-size: 0.95rem;
+    }
+    input:focus { border-color: #3b82f6; }
+    
+    .row-2 { display: flex; gap: 10px; }
+    .row-2 input { width: 50%; }
+
+    .btn-pay {
+      width: 100%; padding: 1rem; border-radius: 0.5rem; font-weight: 600;
+      font-size: 1rem; cursor: pointer; border: none; margin-top: 1rem; transition: 0.2s;
+      background-color: #3b82f6; color: white;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .btn-pay:hover { background-color: #2563eb; }
+
+    .paypal-mockup { display: none; text-align: center; padding: 2rem 0; }
+    .paypal-mockup.active { display: block; }
+
+    .spinner { animation: spin 1s linear infinite; height: 1.2rem; width: 1.2rem; margin-right: 0.5rem; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <div class="checkout-container">
+    <div class="header">
+      <!-- onclick dihapus, diganti pakai ID -->
+      <button id="btn-back" class="back-btn">←</button>
+      <div class="header-title">StartupGate Billing</div>
+    </div>
+
+    <div class="order-summary">
+      <div class="order-row"><span>Enterprise License</span> <span>$50.00</span></div>
+      <div class="order-row"><span>Tax</span> <span>$0.00</span></div>
+      <div class="order-total"><span>Total</span> <span>$50.00</span></div>
+    </div>
+
+    <div id="card-ui" class="form-group">
+      <label>Card Information</label>
+      <input type="text" placeholder="0000 0000 0000 0000" style="margin-bottom: 10px;">
+      <div class="row-2">
+        <input type="text" placeholder="MM / YY">
+        <input type="text" placeholder="CVC">
+      </div>
+      <label style="margin-top: 10px;">Name on Card</label>
+      <input type="text" placeholder="John Doe">
+    </div>
+
+    <div id="paypal-ui" class="paypal-mockup">
+      <p style="color: #9ca3af; font-size: 0.9rem;">You will be redirected to PayPal to complete your purchase securely.</p>
+    </div>
+
+    <button id="btn-submit" class="btn-pay">Pay $50.00</button>
+  </div>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
